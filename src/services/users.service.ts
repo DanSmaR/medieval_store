@@ -8,7 +8,7 @@ export default class UsersService {
 
   public async create(user: IUser): Promise<string> {
     const newUser = await this.usersModel.create(user);
-    const { password, ...newUserWithNoPassWord } = newUser;
-    return createToken(newUserWithNoPassWord);
+    const { id, username } = newUser;
+    return createToken({ id, username });
   }
 }

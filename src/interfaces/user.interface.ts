@@ -3,7 +3,7 @@ interface IUser {
   username: string;
   classe: string;
   level: number;
-  password?: string;
+  password: string;
 }
 
 export default IUser;
