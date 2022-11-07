@@ -5,8 +5,12 @@ import IProduct from '../interfaces';
 class ProductsService {
   constructor(private productsModel = new ProductsModel(connection)) {}
 
-  public async create(product: IProduct): Promise<IProduct> {
+  public create(product: IProduct): Promise<IProduct> {
     return this.productsModel.create(product);
+  }
+
+  public getAll(): Promise<IProduct[]> {
+    return this.productsModel.getAll();
   }
 }
 
