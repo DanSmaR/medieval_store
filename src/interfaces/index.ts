@@ -1,3 +1,7 @@
-import IProduct from './products.interface';
+import IProduct from './product.interface';
+import IUser from './user.interface';
 
-export default IProduct;
+export {
+  IProduct,
+  IUser,
+};

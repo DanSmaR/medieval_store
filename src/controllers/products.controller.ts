@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import ProductsService from '../services';
+import { ProductsService } from '../services';
 
 class ProductsController {
   constructor(private productsService = new ProductsService()) { }
