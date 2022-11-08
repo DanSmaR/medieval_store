@@ -16,7 +16,7 @@ const validateToken = (token: string): IUserJWT | undefined => {
   try {
     const { data } = jwt.verify(token, (process.env.JWT_SECRET as jwt.Secret)) as JwtPayload;
     return data;
-  } catch (err: any) {
+  } catch (err) {
     console.log(err);
     throw new CustomAPIError('Expired or Invalid token', StatusCodes.UNAUTHORIZED);
   }
