@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
+import { StatusCodes } from 'http-status-codes';
 import jwt, { JwtPayload } from 'jsonwebtoken';
+import CustomAPIError from '../errors/customError';
 import { IUserJWT } from '../interfaces';
 
 dotenv.config();
@@ -15,7 +17,8 @@ const validateToken = (token: string): IUserJWT | undefined => {
     const { data } = jwt.verify(token, (process.env.JWT_SECRET as jwt.Secret)) as JwtPayload;
     return data;
   } catch (err: any) {
-    console.error(err.stack);
+    console.log(err);
+    throw new CustomAPIError('Expired or Invalid token', StatusCodes.UNAUTHORIZED);
   }
 };
 
