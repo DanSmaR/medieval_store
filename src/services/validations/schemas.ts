@@ -10,7 +10,15 @@ const productSchema = Joi.object({
   amount: Joi.string().required().min(3),
 });
 
+const userSchema = Joi.object({
+  username: Joi.string().required().min(3),
+  password: Joi.string().required().min(8),
+  level: Joi.number().required().min(1),
+  classe: Joi.string().required().min(3),
+});
+
 export {
   loginSchema,
   productSchema,
+  userSchema,
 };
