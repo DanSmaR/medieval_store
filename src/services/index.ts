@@ -1,4 +1,4 @@
-import ProductsService from './products.service';
+import { ProductsService, validateProductFields } from './products.service';
 import UsersService from './users.service';
 import OrdersService from './orders.service';
 import * as authService from './auth.service';
@@ -8,4 +8,5 @@ export {
   UsersService,
   OrdersService,
   authService,
+  validateProductFields,
 };

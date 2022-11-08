@@ -1,7 +1,7 @@
 import { StatusCodes } from 'http-status-codes';
 
 import { UsersModel } from '../models';
-import loginSchema from './validations/schemas';
+import { loginSchema } from './validations/schemas';
 import { createToken } from '../utils/jwt.utils';
 import { ILoginUser } from '../interfaces';
 import CustomAPIError from '../errors/customError';
