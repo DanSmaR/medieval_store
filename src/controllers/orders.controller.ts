@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import CustomAPIError from '../errors/customError';
-import { IUserJWT } from '../interfaces';
+import { IProductsOrder, IUserJWT } from '../interfaces';
 
 import { OrdersService, ProductsService, validateProductsOrderList } from '../services';
 
@@ -17,17 +17,11 @@ export default class OrdersController {
   };
 
   public createOrder = async (
-    req: Request<unknown, unknown, { user: IUserJWT, productsIds: number[] }>,
+    req: Request<unknown, unknown, { user: IUserJWT } & IProductsOrder>,
     res: Response,
   ): Promise<void> => {
     const { user, productsIds } = req.body;
-    validateProductsOrderList({ productsIds });
     const orderId = await this.ordersService.createOrder(user.id);
-    const products = await Promise
-      .all(productsIds.map((id) => this.productsService.getById(id)));
-    if (products.length !== productsIds.length) {
-      throw new CustomAPIError('Invalid products ids', StatusCodes.BAD_REQUEST);
-    }
     await Promise.all(productsIds
       .map((productId) => this.productsService.update(orderId, productId)));
     res.status(StatusCodes.CREATED).json({ userId: user.id, productsIds });
