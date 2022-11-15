@@ -1,9 +1,8 @@
 import { Request, Response } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import CustomAPIError from '../errors/customError';
 import { IProductsOrder, IUserJWT } from '../interfaces';
 
-import { OrdersService, ProductsService, validateProductsOrderList } from '../services';
+import { OrdersService, ProductsService } from '../services';
 
 export default class OrdersController {
   constructor(
