@@ -14,7 +14,6 @@ const verifyProductsList = async (
   validateProductsOrderList({ productsIds });
   const products = await Promise
     .all(productsIds.map((id) => productsService.getById(id)));
-  console.log(products);
   if (products.some((product) => typeof product === 'undefined')) {
     throw new CustomAPIError('Invalid products ids', StatusCodes.BAD_REQUEST);
   }
