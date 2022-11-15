@@ -15,6 +15,14 @@ class ProductsService {
   public getAll(): Promise<IProduct[]> {
     return this.productsModel.getAll();
   }
+
+  public getById(id:number): Promise<IProduct> {
+    return this.productsModel.getById(id);
+  }
+
+  public update(orderId: number, productId: number): Promise<number> {
+    return this.productsModel.update(orderId, productId);
+  }
 }
 
 const validateProductFields = (data: IProduct): IProduct => {

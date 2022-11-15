@@ -12,13 +12,12 @@ const createToken = (data: IUserJWT): string => jwt
     algorithm: 'HS256',
   });
 
-const validateToken = (token: string): IUserJWT | undefined => {
+const validateToken = (token: string): IUserJWT => {
   try {
     const { data } = jwt.verify(token, (process.env.JWT_SECRET as jwt.Secret)) as JwtPayload;
     return data;
   } catch (err) {
-    console.log(err);
-    throw new CustomAPIError('Expired or Invalid token', StatusCodes.UNAUTHORIZED);
+    throw new CustomAPIError('Invalid token', StatusCodes.UNAUTHORIZED);
   }
 };
 

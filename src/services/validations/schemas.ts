@@ -17,8 +17,15 @@ const userSchema = Joi.object({
   classe: Joi.string().required().min(3),
 });
 
+const orderProductsSchema = Joi.object({
+  productsIds: Joi.array().items(Joi.number().integer().required()).required().messages({
+    'array.includesRequiredUnknowns': '{{#label}} must include only numbers',
+  }),
+});
+
 export {
   loginSchema,
   productSchema,
   userSchema,
+  orderProductsSchema,
 };

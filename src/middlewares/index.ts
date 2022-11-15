@@ -1,3 +1,7 @@
 import errorHandler from './handleError';
+import verifyTokenMiddleware from './verifyToken';
 
-export default errorHandler;
+export {
+  errorHandler,
+  verifyTokenMiddleware, 
+};

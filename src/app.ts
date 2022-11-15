@@ -1,7 +1,7 @@
 import 'express-async-errors';
 import express from 'express';
 import routes from './routes';
-import errorHandler from './middlewares';
+import { errorHandler } from './middlewares';
 
 const app = express();
 

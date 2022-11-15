@@ -1,6 +1,6 @@
 import { ProductsService, validateProductFields } from './products.service';
 import { UsersService, validateUserFields } from './users.service';
-import OrdersService from './orders.service';
+import { OrdersService, validateProductsOrderList } from './orders.service';
 import * as authService from './auth.service';
 
 export {
@@ -10,4 +10,5 @@ export {
   authService,
   validateProductFields,
   validateUserFields,
+  validateProductsOrderList,
 };
